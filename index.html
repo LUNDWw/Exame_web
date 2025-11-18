@@ -237,9 +237,9 @@
         function enviarWhatsApp(event) {
             event.preventDefault();
 
-            const nome = nome.value.trim();
-            const telefone = telefone.value.trim();
-            const cpf = cpf.value.trim();
+            const nome = document.getElementById('nome').value.trim();
+            const telefone = document.getElementById('telefone').value.trim();
+            const cpf = document.getElementById('cpf').value.trim();
 
             if (telefone.length < 14) {
                 alert("Digite um telefone válido com DDD.");
