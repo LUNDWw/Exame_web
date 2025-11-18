@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <title>Ótica da Família</title>
+
+    <style>
+        /* ============================
+           ESTILOS GERAIS
+        ============================ */
+        body {
+            transition: background 0.4s ease, color 0.4s ease;
+        }
+        .card {
+            transition: all 0.3s ease;
+            background-color: #003366;
+            color: #fff;
+            border: none;
+        }
+        .card:hover {
+            background-color: #FFD700 !important;
+            color: #000 !important;
+            transform: translateY(-5px);
+        }
+        .card i {
+            font-size: 2.4rem;
+            margin-bottom: 12px;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        .card:hover i {
+            color: #000;
+            transform: scale(1.15);
+        }
+
+        .form-control {
+            transition: background 0.3s ease, color 0.3s ease, border 0.3s ease;
+        }
+
+        .btn-primary {
+            background-color: #003366;
+            border-color: #FFD700;
+            color: #FFD700;
+        }
+
+        /* ============================
+           TEMA CLARO
+        ============================ */
+        body.light {
+            background-color: #ffffff;
+            color: #000000;
+        }
+        body.light .form-control {
+            background-color: #fff;
+            color: #000;
+            border: 1px solid #003366;
+        }
+        body.light footer {
+            background: #000;
+            color: #FFD700;
+        }
+
+        /* ============================
+           TEMA ESCURO
+        ============================ */
+        body.dark {
+            background-color: #000000;
+            color: #ffffff;
+        }
+        body.dark .form-control {
+            background-color: #000;
+            color: #fff;
+            border: 1px solid #FFD700;
+        }
+        body.dark .btn-primary {
+            background-color: #FFD700;
+            color: #003366;
+            border-color: #003366;
+        }
+
+        body.dark .card {
+            background-color: #001F3F;
+            color: #fff;
+        }
+        body.dark .card:hover {
+            background-color: #FFD700 !important;
+            color: #000 !important;
+        }
+
+        /* ============================
+           BOTÃO DE TEMA (TOGGLE)
+        ============================ */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #FFD700;
+            color: #000;
+            border: none;
+            border-radius: 50%;
+            width: 52px;
+            height: 52px;
+            font-size: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 9999;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            transition: 0.3s ease;
+        }
+        .theme-toggle:hover {
+            transform: scale(1.12);
+        }
+
+        /* No modo escuro o botão muda */
+        body.dark .theme-toggle {
+            background: #003366;
+            color: #FFD700;
+        }
+
+        /* ============================
+           BOTÃO FLUTUANTE WHATSAPP
+        ============================ */
+        .whatsapp-btn {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            background-color: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            z-index: 9999;
+            transition: transform 0.3s ease;
+        }
+        .whatsapp-btn:hover {
+            transform: scale(1.12);
+        }
+    </style>
+</head>
+
+<body class="light">
+    <!-- BOTÃO DE TROCA DE TEMA -->
+    <button class="theme-toggle" id="themeToggle">
+        <i class="bi bi-moon"></i>
+    </button>
+
+    <div class="container my-5 text-center">
+        <h1 class="display-4 text-warning">Ótica da Família</h1>
+        <p class="lead">Venha marcar seu exame para cuidar da sua saúde ocular</p>
+        <p class="lead">Contato: (87) 9988-9431</p>
+
+        <!-- Serviços -->
+        <div class="row mt-5 text-center g-4">
+            <div class="col-12 col-md-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <i class="bi bi-eye"></i>
+                        <h5 class="card-title">Exame de Vista</h5>
+                        <p class="card-text">Avaliação completa da visão e refração.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <i class="bi bi-people"></i>
+                        <h5 class="card-title">Atendimento de Qualidade</h5>
+                        <p class="card-text">Seu bem-estar é nossa responsabilidade.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <i class="bi bi-person-vcard"></i>
+                        <h5 class="card-title">Consulta com Especialista</h5>
+                        <p class="card-text">Atendimento personalizado por oftalmologista.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Formulário -->
+        <div class="row justify-content-center mt-5">
+            <div class="col-12 col-md-6">
+                <form onsubmit="enviarWhatsApp(event)">
+                    <div class="mb-3 text-start">
+                        <label class="form-label">Nome Completo</label>
+                        <input type="text" class="form-control" id="nome" required>
+                    </div>
+
+                    <div class="mb-3 text-start">
+                        <label class="form-label">Telefone</label>
+                        <input type="text" class="form-control" id="telefone" required>
+                    </div>
+
+                    <div class="mb-3 text-start">
+                        <label class="form-label">CPF</label>
+                        <input type="text" class="form-control" id="cpf" required>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary w-100">Marcar Exame</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer class="text-center py-4">
+        <p>&copy; 2025 Ótica da Família. Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- BOTÃO FLUTUANTE WHATSAPP -->
+    <a href="https://wa.me/558799889431" class="whatsapp-btn" target="_blank">
+        <i class="bi bi-whatsapp"></i>
+    </a>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+
+    <script>
+        /* MÁSCARAS */
+        $(document).ready(function() {
+            $('#cpf').mask('000.000.000-00');
+            $('#telefone').mask('(00) 00000-0000');
+        });
+
+        /* ENVIO PARA WHATSAPP */
+        function enviarWhatsApp(event) {
+            event.preventDefault();
+
+            const nome = nome.value.trim();
+            const telefone = telefone.value.trim();
+            const cpf = cpf.value.trim();
+
+            if (telefone.length < 14) {
+                alert("Digite um telefone válido com DDD.");
+                return;
+            }
+
+            const msg = `Olá! Gostaria de marcar um exame.\n\nNome: ${nome}\nTelefone: ${telefone}\nCPF: ${cpf}`;
+            const url = `https://wa.me/558799889431?text=${encodeURIComponent(msg)}`;
+            window.open(url, "_blank");
+        }
+
+        /* =====================
+           TROCA DE TEMA MANUAL
+        ===================== */
+        const btn = document.getElementById("themeToggle");
+        const body = document.body;
+
+        // carregar tema salvo
+        const savedTheme = localStorage.getItem("theme");
+        if (savedTheme) body.className = savedTheme;
+
+        function updateIcon() {
+            btn.innerHTML = body.classList.contains("dark")
+                ? '<i class="bi bi-sun"></i>'
+                : '<i class="bi bi-moon"></i>';
+        }
+        updateIcon();
+
+        btn.addEventListener("click", () => {
+            body.classList.toggle("dark");
+            body.classList.toggle("light");
+
+            localStorage.setItem("theme", body.className);
+            updateIcon();
+        });
+    </script>
+
+</body>
+</html>
