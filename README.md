@@ -85,11 +85,6 @@ Basta abrir o arquivo `index.html` em qualquer navegador moderno.
 ```
 /projeto
 │── index.html
-│── /css  (se desejar separar futuramente)
-│── /js   (opcional)
-└── /assets (imagens e ícones)
-```
-
 Atualmente o código está todo centralizado em um único arquivo HTML.
 
 ---
