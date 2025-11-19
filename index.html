@@ -8,9 +8,6 @@
     <title>Ótica da Família</title>
 
     <style>
-        /* ============================
-           ESTILOS GERAIS
-        ============================ */
         body {
             transition: background 0.4s ease, color 0.4s ease;
         }
@@ -45,9 +42,6 @@
             color: #FFD700;
         }
 
-        /* ============================
-           TEMA CLARO
-        ============================ */
         body.light {
             background-color: #ffffff;
             color: #000000;
@@ -62,9 +56,6 @@
             color: #FFD700;
         }
 
-        /* ============================
-           TEMA ESCURO
-        ============================ */
         body.dark {
             background-color: #000000;
             color: #ffffff;
@@ -89,9 +80,6 @@
             color: #000 !important;
         }
 
-        /* ============================
-           BOTÃO DE TEMA (TOGGLE)
-        ============================ */
         .theme-toggle {
             position: fixed;
             top: 20px;
@@ -115,15 +103,12 @@
             transform: scale(1.12);
         }
 
-        /* No modo escuro o botão muda */
+ 
         body.dark .theme-toggle {
             background: #003366;
             color: #FFD700;
         }
 
-        /* ============================
-           BOTÃO FLUTUANTE WHATSAPP
-        ============================ */
         .whatsapp-btn {
             position: fixed;
             right: 20px;
@@ -148,7 +133,7 @@
 </head>
 
 <body class="light">
-    <!-- BOTÃO DE TROCA DE TEMA -->
+
     <button class="theme-toggle" id="themeToggle">
         <i class="bi bi-moon"></i>
     </button>
@@ -158,7 +143,7 @@
         <p class="lead">Venha marcar seu exame para cuidar da sua saúde ocular</p>
         <p class="lead">Contato: (87) 9988-9431</p>
 
-        <!-- Serviços -->
+ 
         <div class="row mt-5 text-center g-4">
             <div class="col-12 col-md-4">
                 <div class="card h-100">
@@ -189,7 +174,6 @@
             </div>
         </div>
 
-        <!-- Formulário -->
         <div class="row justify-content-center mt-5">
             <div class="col-12 col-md-6">
                 <form onsubmit="enviarWhatsApp(event)">
@@ -218,7 +202,6 @@
         <p>&copy; 2025 Ótica da Família. Todos os direitos reservados.</p>
     </footer>
 
-    <!-- BOTÃO FLUTUANTE WHATSAPP -->
     <a href="https://wa.me/558799889431" class="whatsapp-btn" target="_blank">
         <i class="bi bi-whatsapp"></i>
     </a>
@@ -227,13 +210,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
 
     <script>
-        /* MÁSCARAS */
+        
         $(document).ready(function() {
             $('#cpf').mask('000.000.000-00');
             $('#telefone').mask('(00) 00000-0000');
         });
 
-        /* ENVIO PARA WHATSAPP */
         function enviarWhatsApp(event) {
             event.preventDefault();
 
@@ -251,13 +233,9 @@
             window.open(url, "_blank");
         }
 
-        /* =====================
-           TROCA DE TEMA MANUAL
-        ===================== */
         const btn = document.getElementById("themeToggle");
         const body = document.body;
 
-        // carregar tema salvo
         const savedTheme = localStorage.getItem("theme");
         if (savedTheme) body.className = savedTheme;
 
